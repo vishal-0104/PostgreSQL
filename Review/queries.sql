@@ -1,7 +1,13 @@
-Query: CREATE TABLE books(book_id SERIAL PRIMARY KEY, title varchar(100),publication_year int, genre varchar(100));
+Query: CREATE T name  | title  | borrow_date 
+-------+--------+-------------
+ name1 | title1 | 2025-01-11
+ name1 | title1 | 2025-02-12
+ name3 | title3 | 2025-03-13
+ name4 | title4 | 2025-04-14
+ name5 | title5 | 2025-05-15
+(5 rows)
 
-                                           Table "public.books"
-      Column      |          Type          | Collation | Nullable |                Default                 
+ion | Nullable |                Default                 
 ------------------+------------------------+-----------+----------+----------------------------------------
  book_id          | integer                |           | not null | nextval('books_book_id_seq'::regclass)
  title            | character varying(100) |           |          | 
@@ -103,7 +109,9 @@ WHERE borrowings.due_date < CURRENT_DATE;
 
 Query: SELECT members.name, COUNT(*) AS total_books_borrowed
 FROM members
-JOIN borrowings ON members.member_id = borrowings.member_id
+JOIN borROLLBACK
+BEGIN
+ers.member_id = borrowings.member_id
 GROUP BY members.name;
 
  name  | total_books_borrowed 
@@ -113,4 +121,11 @@ GROUP BY members.name;
  name5 |                    1
  name1 |                    2
 (4 rows)
+
+Query: BEGIN;
+INSERT INTO books(title) VALUE (title6);
+ROLLBACK;
+
+BEGIN
+ROLLBACK
 
