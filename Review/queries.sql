@@ -125,7 +125,8 @@ GROUP BY members.name;
 Query: BEGIN;
 INSERT INTO books(title) VALUE (title6);
 ROLLBACK;
+COMMIT;
 
 BEGIN
 ROLLBACK
-
+COMMIT
